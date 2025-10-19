@@ -1,194 +1,447 @@
 <!DOCTYPE html>
 <html lang="ro">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Utility Bot | Made by g3orgecristian</title>
-    
-    <!-- Favicon -->
-    <link rel="icon" type="image/png" href="https://g3orgecristian.github.io/assets/media/utilitybot-logo-square.png">
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Utility Bot | Made by g3orgecristian</title>
+  <link rel="icon" type="image/png" href="https://g3orgecristian.github.io/assets/media/utilitybot-logo-square.png">
 
-    <style>
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: #2C2F33;
-            color: #FFFFFF;
-            margin: 0;
-            padding: 0;
-        }
+  <style>
+    :root{
+      --bg-1: #0f1113;
+      --bg-2: #16171a;
+      --accent: #7289DA;
+      --accent-2: #9aa9ff;
+      --glass-alpha: 0.12;
+      --glass-border: rgba(255,255,255,0.06);
+      --card-radius: 14px;
+      --text: #e8eef8;
+      --muted: #93a0b4;
+      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+      --glass-blur: 10px;
+    }
 
-        .container {
-            display: flex;
-            justify-content: center; /* center main content */
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
+    *{box-sizing: border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(114,137,218,0.06), transparent 10%),
+        radial-gradient(800px 400px at 90% 90%, rgba(154,169,255,0.04), transparent 10%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:48px 24px;
+      scroll-behavior: smooth;
+      min-height:100vh;
+      display:flex;
+      align-items:flex-start;
+      justify-content:center;
+      gap:24px;
+    }
 
-        main {
-            flex: 1;
-            max-width: 800px;
-            margin-right: 2rem;
-        }
+    .page {
+      width:100%;
+      max-width:1200px;
+      display:flex;
+      gap:24px;
+      align-items:flex-start;
+    }
 
-        header {
-            background-color: #23272A;
-            padding: 2rem;
-            text-align: center;
-            border-radius: 10px;
-        }
+    main{
+      flex:1 1 700px;
+      min-width:280px;
+      max-width:880px;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      animation: fadeUp .45s ease both;
+    }
 
-        header h1 {
-            margin: 0;
-            color: #7289DA;
-        }
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,var(--glass-alpha)), rgba(255,255,255,0.02));
+      border: 1px solid var(--glass-border);
+      border-radius: var(--card-radius);
+      padding:20px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+    }
 
-        section {
-            margin-bottom: 2rem;
-            background-color: #2C2F33;
-            border-radius: 10px;
-            padding: 1.5rem;
-            box-shadow: 0 0 10px rgba(0,0,0,0.5);
-        }
+    header.card{
+      padding:28px;
+      text-align:center;
+      position:relative;
+      overflow:hidden;
+    }
 
-        h2 {
-            color: #7289DA;
-            margin-top: 0;
-        }
+    header h1{
+      margin:0;
+      font-size:clamp(1.6rem,2.4vw,2.6rem);
+      letter-spacing:-0.02em;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), #7bd1ff, var(--accent));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      font-weight:700;
+      position:relative;
+      display:inline-block;
+    }
 
-        ul {
-            list-style: none;
-            padding: 0;
-        }
+    header p{
+      margin:8px 0 0 0;
+      color:var(--muted);
+      font-size:0.96rem;
+    }
 
-        li {
-            margin: 0.5rem 0;
-            padding: 0.3rem 0.5rem;
-            background-color: #23272A;
-            border-radius: 5px;
-        }
+    header::before{
+      content:"";
+      position:absolute;
+      left:-10%;
+      top:-30%;
+      width:120%;
+      height:180px;
+      background: radial-gradient(closest-side, rgba(114,137,218,0.12), transparent 40%);
+      transform:translateZ(0) rotate(8deg);
+      filter: blur(30px);
+      pointer-events:none;
+      opacity:0.95;
+    }
 
-        a.button {
-            display: inline-block;
-            padding: 0.7rem 1.5rem;
-            background-color: #7289DA;
-            color: #fff;
-            text-decoration: none;
-            border-radius: 5px;
-            font-weight: bold;
-            margin: 0.5rem 0.5rem 0.5rem 0;
-        }
+    section.card{
+      padding:18px;
+      transition:transform .28s cubic-bezier(.2,.9,.3,1), box-shadow .28s;
+    }
 
-        a.button:hover {
-            background-color: #5b6eae;
-        }
+    section.card:hover{
+      transform: translateY(-6px);
+      box-shadow: 0 18px 50px rgba(2,6,23,0.7);
+    }
 
-        /* Sidebar fixat in dreapta */
-        .sidebar {
-            width: 360px;
-            flex-shrink: 0;
-            position: sticky;
-            top: 2rem;
-            height: fit-content;
-        }
+    section h2{
+      margin:0 0 10px 0;
+      font-size:1.05rem;
+      color:var(--accent);
+      display:flex;
+      align-items:center;
+      gap:10px;
+    }
 
-        .sidebar h2 {
-            text-align: center;
-            margin-bottom: 1rem;
-        }
+    section p, section li{
+      color:var(--text);
+      opacity:0.95;
+      line-height:1.55;
+      font-size:0.98rem;
+    }
 
-        .sidebar iframe {
-            width: 100%;
-            height: 500px;
-            border-radius: 10px;
-            border: none;
-        }
+    ul{padding:0; margin:0; list-style:none; display:grid; gap:8px}
 
-        footer {
-            text-align: center;
-            padding: 1rem;
-            background-color: #23272A;
-            color: #999;
-            margin-top: 2rem;
-        }
+    li{
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border-radius:10px;
+      padding:10px 12px;
+      border:1px solid rgba(255,255,255,0.03);
+      font-weight:600;
+      display:flex;
+      justify-content:space-between;
+      gap:12px;
+      align-items:center;
+    }
 
-        /* Mobile adjustments */
-        @media (max-width: 1000px) {
-            .container {
-                flex-direction: column;
-                padding: 1rem;
-            }
+    li strong{ color:var(--accent); font-weight:700 }
 
-            main {
-                margin-right: 0;
-            }
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap:12px;
+      margin-top:10px;
+    }
 
-            .sidebar {
-                width: 100%;
-                margin-top: 2rem;
-                position: relative;
-            }
-        }
-    </style>
+    a.button{
+      display:inline-flex;
+      align-items:center;
+      gap:10px;
+      padding:10px 16px;
+      border-radius:10px;
+      text-decoration:none;
+      font-weight:700;
+      color:var(--bg-1);
+      background: linear-gradient(90deg, rgba(114,137,218,0.98), rgba(154,169,255,0.95));
+      box-shadow: 0 8px 30px rgba(114,137,218,0.14), 0 2px 6px rgba(2,6,23,0.25);
+      transform:translateZ(0);
+      transition: transform .18s ease, box-shadow .18s ease;
+    }
+
+    a.button:hover{
+      transform: translateY(-4px) scale(1.02);
+      box-shadow: 0 18px 50px rgba(114,137,218,0.18), 0 6px 20px rgba(2,6,23,0.45);
+    }
+
+    a.button.ghost{
+      background:transparent;
+      color:var(--text);
+      border: 1px solid rgba(255,255,255,0.04);
+      box-shadow:none;
+    }
+
+    footer.card{
+      text-align:center;
+      font-size:0.92rem;
+      color:var(--muted);
+      padding:12px 16px;
+    }
+
+    aside.sidebar{
+      width:340px;
+      flex-shrink:0;
+      position:sticky;
+      top:48px;
+      height:calc(100vh - 96px);
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      align-items:stretch;
+      min-width:240px;
+    }
+
+    aside .card{
+      padding:12px;
+      display:flex;
+      flex-direction:column;
+      gap:12px;
+    }
+
+    aside h3{
+      margin:0;
+      text-align:center;
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    .widget{
+      flex:1 1 auto;
+      border-radius:10px;
+      overflow:hidden;
+      border:1px solid rgba(255,255,255,0.03);
+      background: linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+    }
+
+    .widget iframe{
+      width:100%;
+      height:100%;
+      border:0;
+      display:block;
+    }
+
+    .muted{ color:var(--muted) }
+    .small{ font-size:0.9rem }
+    .gap-8{ gap:8px }
+
+    @media (max-width:1000px){
+      body{ padding:30px 18px }
+      .page{ flex-direction:column-reverse; align-items:stretch }
+      aside.sidebar{ position:relative; width:100%; height:auto; top:initial; }
+      aside .card{ height:auto }
+    }
+
+    @keyframes fadeUp{
+      from{ opacity:0; transform:translateY(8px) }
+      to{ opacity:1; transform:translateY(0) }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important }
+    }
+
+    .icon{
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      width:32px;height:32px;
+      border-radius:8px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));
+      border:1px solid rgba(255,255,255,0.02);
+      color:var(--accent);
+      font-weight:700;
+    }
+
+    /* Invite block styles (big, prominent in sidebar) */
+    .invite-card{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+      align-items:stretch;
+      padding:16px;
+    }
+
+    .invite-title{
+      font-size:1.05rem;
+      text-align:center;
+      color:var(--accent);
+      font-weight:800;
+      letter-spacing:0.2px;
+    }
+
+    .invite-buttons{
+      display:flex;
+      flex-direction:column;
+      gap:10px;
+    }
+
+    .invite-buttons a{
+      padding:12px 14px;
+      border-radius:12px;
+      text-decoration:none;
+      font-weight:800;
+      display:inline-flex;
+      align-items:center;
+      justify-content:center;
+      gap:8px;
+      transition:transform .14s ease, box-shadow .14s ease;
+      box-shadow: 0 10px 30px rgba(2,6,23,0.55);
+    }
+
+    .invite-primary{
+      background: linear-gradient(90deg, rgba(114,137,218,0.98), rgba(154,169,255,0.95));
+      color:var(--bg-1);
+      border:1px solid rgba(255,255,255,0.02);
+    }
+
+    .invite-admin{
+      background: linear-gradient(90deg, rgba(30,31,34,0.9), rgba(60,62,70,0.85));
+      color:var(--text);
+      border:1px solid rgba(255,255,255,0.04);
+    }
+
+    .invite-buttons a:hover{
+      transform:translateY(-4px);
+      box-shadow: 0 20px 60px rgba(2,6,23,0.7);
+    }
+  </style>
 </head>
 <body>
-    <div class="container">
-        <main>
-            <header>
-                <h1>Utility Bot</h1>
-                <p>Un bot simplu și reliable!</p>
-            </header>
+  <div class="page" role="main">
+    <!-- MAIN COLUMN -->
+    <main>
+      <!-- Header cu logo -->
+      <header class="card" aria-labelledby="title">
+        <div style="display:flex; align-items:center; justify-content:center; gap:12px;">
+          <img src="https://g3orgecristian.github.io/assets/media/utilitybot-logo-square.png" 
+               alt="Utility Bot Logo" 
+               style="width:48px; height:48px; border-radius:8px;">
+          <h1 id="title">Utility Bot</h1>
+        </div>
+        <p>Un bot simplu și reliable.</p>
+      </header>
 
-            <section>
-                <h2>Despre bot</h2>
-                <p>Acest bot a fost făcut pentru a avea comenzi simple și reliable.</p>
-                <p>Botul este scris în Python pe baza discord.py.</p>
-                <p>Dacă aveți sugestii de comenzi, le puteți spune pe serverul nostru de Discord.</p>
-            </section>
+      <!-- Reordered: Despre bot -->
+      <section class="card" aria-labelledby="about">
+        <h2 id="about">Despre bot</h2>
+        <p>Acest bot a fost făcut pentru a avea comenzi simple și reliable.</p>
+        <p>Botul este scris în Python folosind <strong>discord.py</strong>.</p>
+        <p class="muted small">Dacă aveți sugestii, le puteți spune pe serverul nostru de Discord.</p>
+      </section>
 
-            <section>
-                <h2>Comenzile botului</h2>
+      <!-- Noutăți (blank) -->
+      <section class="card" aria-labelledby="news">
+        <h2 id="news">Update-uri bot</h2>
+        <p>Momentan nu este niciun update nou.</p>
+      </section>
 
-                <p>Comenzi basic care nu necesită permisiuni de administrator:</p>
-                <ul>
-                    <li><strong>salut</strong> - Botul te salută și îți arată latenta.</li>
-                    <li><strong>help</strong> - Lista completă de comenzi.</li>
-                    <li><strong>quote</strong> - Creează un quote pentru un utilizator.</li>
-                    <li><strong>poll</strong> - Creează un sondaj cu ✅/❌.</li>
-                    <li><strong>diceroll</strong> - Aruncă un zar.</li>
-                    <li><strong>avatar</strong> - Afișează avatarul tău sau al unui utilizator menționat.</li>
-                    <li><strong>userinfo</strong> - Afișează informații despre un utilizator.</li>
-                </ul>
+      <!-- Comenzile botului -->
+      <section class="card" aria-labelledby="commands">
+        <h2 id="commands">Comenzile botului</h2>
 
-                <p>Comenzi care necesită permisiuni de administrator:</p>
-                <ul>
-                    <li><strong>kick</strong> - Dai afară un membru.</li>
-                    <li><strong>ban</strong> - Banezi un membru.</li>
-                    <li><strong>purge</strong> - Șterge mesaje.</li>
-                </ul>
-            </section>
+        <p class="small muted">Comenzi basic care nu necesită permisiuni de administrator:</p>
+        <ul>
+          <li><span><strong>salut</strong></span><span class="muted small">Botul te salută și îți arată latenta.</span></li>
+          <li><span><strong>help</strong></span><span class="muted small">Lista completă de comenzi.</span></li>
+          <li><span><strong>quote</strong></span><span class="muted small">Creează un quote pentru un utilizator.</span></li>
+          <li><span><strong>poll</strong></span><span class="muted small">Creează un sondaj cu ✅/❌.</span></li>
+          <li><span><strong>diceroll</strong></span><span class="muted small">Aruncă un zar.</span></li>
+          <li><span><strong>avatar</strong></span><span class="muted small">Afișează avatarul tău sau al unui utilizator menționat.</span></li>
+          <li><span><strong>userinfo</strong></span><span class="muted small">Afișează informații despre un utilizator.</span></li>
+        </ul>
 
-            <section>
-                <h2>Invită botul pe serverul tău</h2>
-                <p>Dacă dorești să inviți botul, alege una dintre opțiuni:</p>
-                <a class="button" href="https://discord.com/oauth2/authorize?client_id=795730342085525505&permissions=1689367404203072&integration_type=0&scope=applications.commands+bot" target="_blank">
-                    Invitatie bot cu permisiuni basic 
-                </a>
-                <a class="button" href="https://discord.com/oauth2/authorize?client_id=795730342085525505&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">
-                    Invitatie bot cu permisiuni de administrator 
-                </a>
-            </section>
+        <p class="small muted" style="margin-top:12px">Comenzi care necesită permisiuni de administrator:</p>
+        <ul>
+          <li><span><strong>kick</strong></span><span class="muted small">Dai afară un membru.</span></li>
+          <li><span><strong>ban</strong></span><span class="muted small">Banezi un membru.</span></li>
+          <li><span><strong>purge</strong></span><span class="muted small">Șterge mesaje.</span></li>
+        </ul>
+      </section>
 
-            <footer>
-                Utility Bot | Made with ❤️ by g3orgecristian
-            </footer>
-        </main>
+      <!-- Footer -->
+      <footer class="card" aria-label="footer">
+        Utility Bot | Made with ❤️ by g3orgecristian
+      </footer>
+    </main>
 
-        <aside class="sidebar">
-            <h2>Server Discord</h2>
-            <iframe src="https://discord.com/widget?id=1231979176358183052&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
-        </aside>
-    </div>
+    <!-- SIDEBAR -->
+    <aside class="sidebar" aria-label="sidebar">
+      <!-- Discord widget -->
+      <div class="card" style="padding:12px;">
+        <h3>Server Discord</h3>
+        <div class="widget" title="Widget server" style="height:320px;">
+          <iframe
+            src="https://discord.com/widget?id=1231979176358183052&theme=dark"
+            allowtransparency="true"
+            sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts">
+          </iframe>
+        </div>
+      </div>
+
+      <!-- Invite block (stil mare) -->
+      <div class="card invite-card" aria-labelledby="invite-title">
+        <div id="invite-title" class="invite-title">Invită botul</div>
+        <p>Alege una dintre optiunile de invitatii la bot in functie de ce permisiuni vrei sa aiba botul.</p>
+        <div class="invite-buttons">
+          <a
+            class="invite-primary"
+            href="https://discord.com/oauth2/authorize?client_id=795730342085525505&permissions=1689367404203072&integration_type=0&scope=applications.commands+bot"
+            target="_blank" rel="noopener"
+            aria-label="Invitație bot permisiuni basic">
+            Invitatie (permisiuni basic)
+          </a>
+
+          <a
+            class="invite-admin"
+            href="https://discord.com/oauth2/authorize?client_id=795730342085525505&permissions=8&integration_type=0&scope=applications.commands+bot"
+            target="_blank" rel="noopener"
+            aria-label="Invitație bot administrator">
+            Invitatie (administrator)
+          </a>
+        </div>
+      </div>
+    </aside>
+  </div>
+
+  <!-- Small JS for micro-interactions -->
+  <script>
+    const reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (!reduce) {
+      const header = document.querySelector('header.card');
+      if (header) {
+        header.addEventListener('pointermove', e => {
+          const r = header.getBoundingClientRect();
+          const x = (e.clientX - r.left) / r.width - 0.5;
+          const y = (e.clientY - r.top) / r.height - 0.5;
+          header.style.transform = `translate3d(${x * 4}px, ${y * 4}px, 0)`;
+          header.style.transition = 'transform .12s linear';
+        });
+        header.addEventListener('pointerleave', () => {
+          header.style.transform = '';
+        });
+      }
+    }
+
+    (function(){
+      const style = document.createElement('style');
+      style.innerHTML = 'a:focus{outline:2px dashed rgba(114,137,218,0.35);outline-offset:4px}';
+      document.head.appendChild(style);
+    })();
+  </script>
 </body>
 </html>
-
