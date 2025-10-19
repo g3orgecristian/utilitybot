@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Utility Bot | Made by g3orgecristian</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" href="https://example.com/favicon.png">
+
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #2C2F33;
+            color: #FFFFFF;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            display: flex;
+            justify-content: center; /* center main content */
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        main {
+            flex: 1;
+            max-width: 800px;
+            margin-right: 2rem;
+        }
+
+        header {
+            background-color: #23272A;
+            padding: 2rem;
+            text-align: center;
+            border-radius: 10px;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #7289DA;
+        }
+
+        section {
+            margin-bottom: 2rem;
+            background-color: #2C2F33;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 0 10px rgba(0,0,0,0.5);
+        }
+
+        h2 {
+            color: #7289DA;
+            margin-top: 0;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        li {
+            margin: 0.5rem 0;
+            padding: 0.3rem 0.5rem;
+            background-color: #23272A;
+            border-radius: 5px;
+        }
+
+        a.button {
+            display: inline-block;
+            padding: 0.7rem 1.5rem;
+            background-color: #7289DA;
+            color: #fff;
+            text-decoration: none;
+            border-radius: 5px;
+            font-weight: bold;
+            margin: 0.5rem 0.5rem 0.5rem 0;
+        }
+
+        a.button:hover {
+            background-color: #5b6eae;
+        }
+
+        /* Sidebar fixat in dreapta */
+        .sidebar {
+            width: 360px;
+            flex-shrink: 0;
+            position: sticky;
+            top: 2rem;
+            height: fit-content;
+        }
+
+        .sidebar h2 {
+            text-align: center;
+            margin-bottom: 1rem;
+        }
+
+        .sidebar iframe {
+            width: 100%;
+            height: 500px;
+            border-radius: 10px;
+            border: none;
+        }
+
+        footer {
+            text-align: center;
+            padding: 1rem;
+            background-color: #23272A;
+            color: #999;
+            margin-top: 2rem;
+        }
+
+        /* Mobile adjustments */
+        @media (max-width: 1000px) {
+            .container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            main {
+                margin-right: 0;
+            }
+
+            .sidebar {
+                width: 100%;
+                margin-top: 2rem;
+                position: relative;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <main>
+            <header>
+                <h1>Utility Bot</h1>
+                <p>Un bot simplu și reliable!</p>
+            </header>
+
+            <section>
+                <h2>Despre bot</h2>
+                <p>Acest bot a fost făcut pentru a avea comenzi simple și reliable.</p>
+                <p>Botul este scris în Python pe baza discord.py.</p>
+                <p>Dacă aveți sugestii de comenzi, le puteți spune pe serverul nostru de Discord.</p>
+            </section>
+
+            <section>
+                <h2>Comenzile botului</h2>
+
+                <p>Comenzi basic care nu necesită permisiuni de administrator:</p>
+                <ul>
+                    <li><strong>salut</strong> - Botul te salută și îți arată latenta.</li>
+                    <li><strong>help</strong> - Lista completă de comenzi.</li>
+                    <li><strong>quote</strong> - Creează un quote pentru un utilizator.</li>
+                    <li><strong>poll</strong> - Creează un sondaj cu ✅/❌.</li>
+                    <li><strong>diceroll</strong> - Aruncă un zar.</li>
+                    <li><strong>avatar</strong> - Afișează avatarul tău sau al unui utilizator menționat.</li>
+                    <li><strong>userinfo</strong> - Afișează informații despre un utilizator.</li>
+                </ul>
+
+                <p>Comenzi care necesită permisiuni de administrator:</p>
+                <ul>
+                    <li><strong>kick</strong> - Dai afară un membru.</li>
+                    <li><strong>ban</strong> - Banezi un membru.</li>
+                    <li><strong>purge</strong> - Șterge mesaje.</li>
+                </ul>
+            </section>
+
+            <section>
+                <h2>Invită botul pe serverul tău</h2>
+                <p>Dacă dorești să inviți botul, alege una dintre opțiuni:</p>
+                <a class="button" href="https://discord.com/oauth2/authorize?client_id=795730342085525505&permissions=1689367404203072&integration_type=0&scope=applications.commands+bot" target="_blank">
+                    Invitatie bot cu permisiuni basic 
+                </a>
+                <a class="button" href="https://discord.com/oauth2/authorize?client_id=795730342085525505&permissions=8&integration_type=0&scope=applications.commands+bot" target="_blank">
+                    Invitatie bot cu permisiuni de administrator 
+                </a>
+            </section>
+
+            <footer>
+                Utility Bot | Made with ❤️ by g3orgecristian
+            </footer>
+        </main>
+
+        <aside class="sidebar">
+            <h2>Server Discord</h2>
+            <iframe src="https://discord.com/widget?id=1231979176358183052&theme=dark" allowtransparency="true" sandbox="allow-popups allow-popups-to-escape-sandbox allow-same-origin allow-scripts"></iframe>
+        </aside>
+    </div>
+</body>
+</html>
