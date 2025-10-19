@@ -34,10 +34,10 @@ async def start_webserver():
 async def on_ready():
     print(f"Botul a pornit cu numele {bot.user.name}")
     await bot.change_presence(
-        status=discord.Status.dnd,
+        status=discord.Status.online,
         activity=discord.Activity(
-            type=discord.ActivityType.listening,
-            name="g!help"
+            type=discord.ActivityType.playing,
+            name="u!help | Utility Bot"
         )
     )
 
