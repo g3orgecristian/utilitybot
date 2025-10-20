@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Utility Bot | Politica de Confidențialitate</title>
+  <link rel="icon" type="image/png" href="https://g3orgecristian.github.io/assets/media/utilitybot-logo-square.png">
+
+  <style>
+    :root{
+      --bg-1: #0f1113;
+      --bg-2: #16171a;
+      --accent: #7289DA;
+      --accent-2: #9aa9ff;
+      --glass-alpha: 0.12;
+      --glass-border: rgba(255,255,255,0.06);
+      --card-radius: 14px;
+      --text: #e8eef8;
+      --muted: #93a0b4;
+      --shadow: 0 8px 30px rgba(2,6,23,0.6);
+      --glass-blur: 10px;
+    }
+
+    *{box-sizing: border-box}
+    html,body{height:100%}
+    body{
+      margin:0;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial;
+      background:
+        radial-gradient(1200px 600px at 10% 10%, rgba(114,137,218,0.06), transparent 10%),
+        radial-gradient(800px 400px at 90% 90%, rgba(154,169,255,0.04), transparent 10%),
+        linear-gradient(180deg, var(--bg-1), var(--bg-2));
+      color:var(--text);
+      -webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;
+      padding:48px 24px;
+      scroll-behavior: smooth;
+      min-height:100vh;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+    }
+
+    main{
+      max-width:800px;
+      width:100%;
+      display:flex;
+      flex-direction:column;
+      gap:18px;
+      animation: fadeUp .45s ease both;
+    }
+
+    .card{
+      background: linear-gradient(180deg, rgba(255,255,255,var(--glass-alpha)), rgba(255,255,255,0.02));
+      border: 1px solid var(--glass-border);
+      border-radius: var(--card-radius);
+      padding:28px;
+      box-shadow: var(--shadow);
+      backdrop-filter: blur(var(--glass-blur));
+      -webkit-backdrop-filter: blur(var(--glass-blur));
+      text-align:left;
+    }
+
+    header h1{
+      margin:0;
+      font-size:clamp(1.6rem,2.4vw,2.6rem);
+      letter-spacing:-0.02em;
+      background: linear-gradient(90deg, var(--accent), var(--accent-2), #7bd1ff, var(--accent));
+      -webkit-background-clip:text;
+      background-clip:text;
+      color:transparent;
+      font-weight:700;
+      display:inline-block;
+    }
+
+    header p{
+      margin:8px 0 16px 0;
+      color:var(--muted);
+      font-size:0.96rem;
+    }
+
+    section p{
+      margin-bottom:12px;
+      line-height:1.55;
+      font-size:0.98rem;
+      color:var(--text);
+    }
+
+    footer{
+      margin-top:20px;
+      text-align:center;
+      font-size:0.92rem;
+      color:var(--muted);
+    }
+
+    @keyframes fadeUp{
+      from{ opacity:0; transform:translateY(8px) }
+      to{ opacity:1; transform:translateY(0) }
+    }
+
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important }
+    }
+  </style>
+</head>
+<body>
+  <main>
+    <div class="card">
+      <header>
+        <h1>Politica de Confidențialitate</h1>
+        <p>Citeste cu atenție politica de confidențialitate a Utility Bot.</p>
+      </header>
+
+      <section>
+        <p><strong>1. Colectarea datelor:</strong> Botul poate colecta informații minimale pentru funcționarea corectă, cum ar fi ID-ul utilizatorului sau mesaje în contextul serverului Discord.</p>
+
+        <p><strong>2. Folosirea datelor:</strong> Datele colectate sunt folosite exclusiv pentru funcțiile botului și nu vor fi distribuite sau vândute terților.</p>
+
+        <p><strong>3. Securitatea datelor:</strong> Autorul botului depune toate eforturile pentru a proteja datele utilizatorilor și a preveni accesul neautorizat.</p>
+
+        <p><strong>4. Ștergerea datelor:</strong> Utilizatorii pot solicita ștergerea datelor colectate de bot prin serverul Discord.</p>
+
+        <p><strong>5. Modificări ale politicii:</strong> Politica de confidențialitate poate fi actualizată periodic. Utilizatorii vor fi notificați prin serverul Discord.</p>
+      </section>
+
+      <footer>
+        Utility Bot | Made with ❤️ by g3orgecristian
+      </footer>
+    </div>
+  </main>
+</body>
+</html>
